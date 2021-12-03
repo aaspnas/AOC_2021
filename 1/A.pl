@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# Part 1 cat: testdata1a.txt | perl A.pl
+# Part 1: "cat testdata1a.txt | perl A.pl"
 
 use strict;
 use warnings;
