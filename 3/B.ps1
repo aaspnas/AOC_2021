@@ -1,5 +1,13 @@
-$data = get-content -Path .\input.txt
+# Usage: pwsh B.ps1 inputfilename
+Param(
+    [Parameter(Mandatory=$true)]
+    [string]
+    $FileName
+)
 
+$data = get-content -Path $FileName
+
+# Find matching entries
 function get-matchstr ($x, $y, $sdata) {
     $found = 0
     $strlen = 1
@@ -43,7 +51,7 @@ function get-matchstr ($x, $y, $sdata) {
     }
 }
 
-
+# Calculate distribution of 1 and 0
 function get-distribution ($pos, $listdata) {
     $values = 0
     $ln = 0
@@ -59,6 +67,7 @@ function get-distribution ($pos, $listdata) {
     return  $values;
 }
 
+# Complex logic here, depending on whether we look for oxygen or co2 debug strings in input
 $ores = get-matchstr '1' '0' $data
 $cres = get-matchstr '0' '1' $data
 

@@ -1,6 +1,13 @@
-$data = get-content -Path .\input.txt
+# Usage: pwsh A.ps1 inputfilename
+Param(
+    [Parameter(Mandatory=$true)]
+    [string]
+    $FileName
+)
 
-$datalength = (gc -tail 1 -Path ./input.txt).length
+$data = get-content -Path $FileName
+
+$datalength = (Get-Content -tail 1 -Path ./input.txt).length
 
 $values = @()
 
@@ -16,11 +23,11 @@ foreach ($line in $data) {
     $chars = $line.ToCharArray()
     for ($c=0; $c -lt $chars.length; $c++) {
         if ($chars[$c] -eq '1') {
-            $values[$c]++}
-
+            $values[$c]++
+        }
     }
 }
-
+# Obtain gamma and epsilon
 $gammastr = ""
 $epsilonstr = ""
 foreach ($v in $values) {
