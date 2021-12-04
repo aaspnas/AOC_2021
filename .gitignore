@@ -1,3 +1,5 @@
 *.txt
 *.out
 .vstags
+.DS_Store
+.vscode
